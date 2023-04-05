@@ -200,6 +200,9 @@ universal-resolver:
 did-key-resolver:
   $require: '@veramo/did-provider-key?t=function&p=/key#getDidKeyResolver'
 
+did-peer-resolver:
+  $require: 'peer-did-resolver?t=function&p=/peer#getResolver'
+
 # Key Manager
 keyManager:
   $require: "@veramo/key-manager#KeyManager"
@@ -253,7 +256,10 @@ didManager:
           $require: "@veramo/did-provider-key#KeyDIDProvider"
           $args:
             - defaultKms: local
-
+        did:peer:
+          $require: "did-peer-plugin#PeerDIDProvider"
+          $args:
+            - defaultKms: local
 didDiscovery:
   $require: '@veramo/did-discovery#DIDDiscovery'
   $args:

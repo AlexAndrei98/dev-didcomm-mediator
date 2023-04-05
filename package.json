@@ -13,6 +13,8 @@
     "@veramo/cli": "^5.0.1-next.4",
     "@veramo/did-comm": "^5.0.0",
     "agent-explore": "^1.8.3",
-    "cors": "^2.8.5"
+    "cors": "^2.8.5",
+    "did-peer-plugin": "^1.0.1",
+    "peer-did-resolver": "https://github.com/veramolabs/peer-did-resolver"
   }
 }
