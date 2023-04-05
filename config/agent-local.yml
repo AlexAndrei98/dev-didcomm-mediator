@@ -141,15 +141,15 @@ server:
               name: Local agent
               apiKey: test123
 
-  # Execute during server initialization
-  init:
-    - $require: "@veramo/remote-server?t=function#createDefaultDid"
-      $args:
-        - agent:
-            $ref: /agent
-          baseUrl:
-            $ref: /constants/baseUrl
-          messagingServiceEndpoint: /messaging
+  # # Execute during server initialization
+  # init:
+  #   - $require: "@veramo/remote-server?t=function#createDefaultDid"
+  #     $args:
+  #       - agent:
+  #           $ref: /agent
+  #         baseUrl:
+  #           $ref: /constants/baseUrl
+  #         messagingServiceEndpoint: /messaging
 
 # Message handler plugin
 messageHandler:
@@ -200,7 +200,7 @@ universal-resolver:
 did-key-resolver:
   $require: '@veramo/did-provider-key?t=function&p=/key#getDidKeyResolver'
 
-did-peer-resolver:
+peer-did-resolver:
   $require: 'peer-did-resolver?t=function&p=/peer#getResolver'
 
 # Key Manager

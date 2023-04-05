@@ -2286,10 +2286,10 @@ did-jwt@^6.11.0, did-jwt@^6.3.0, did-jwt@^6.9.0:
     multiformats "^9.6.5"
     uint8arrays "^3.0.0"
 
-did-peer-plugin@^1.0.1:
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/did-peer-plugin/-/did-peer-plugin-1.0.1.tgz#b8042b383cdf3c6079d1a588f2edd0ecc0b68f70"
-  integrity sha512-VanaDQrC/Wlwj1K+9mg4eKELQiWqnUPcSe01ACNJcnXVqLrj3ir40X7RXalpcNI7SGGJR/k76AUC0KI33h7muA==
+did-peer-plugin@^1.0.3:
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/did-peer-plugin/-/did-peer-plugin-1.0.3.tgz#b90ea67503ea3fc142384d503cd535e6d3e79cc0"
+  integrity sha512-w+KunHqa3m5Z+zwLVhbkCD0QWwBXDRQGCymnfXbstoWjksJqJCSg65HOm+xc7mlhrAnO+tmDedaJMFSlOCJVyg==
   dependencies:
     "@veramo/core" "^4.0.0"
     "@veramo/did-manager" "^4.0.0"
@@ -3712,9 +3712,10 @@ pause@0.0.1:
   resolved "https://registry.yarnpkg.com/pause/-/pause-0.0.1.tgz#1d408b3fdb76923b9543d96fb4c9dfd535d9cb5d"
   integrity sha512-KG8UEiEVkR3wGEb4m5yZkVCzigAD+cVEJck2CzYZO37ZGJfctvVptVO192MwrtPhzONn6go8ylnOdMhKqi4nfg==
 
-"peer-did-resolver@https://github.com/veramolabs/peer-did-resolver":
-  version "1.0.0"
-  resolved "https://github.com/veramolabs/peer-did-resolver#d94f355d63d81556f205c7294cb49df271c662f3"
+peer-did-resolver@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/peer-did-resolver/-/peer-did-resolver-1.0.1.tgz#15d5d490af6b8d595168a3d071385acbb54c542a"
+  integrity sha512-nbc8Y1L6IDqBTgWYx2OvIYJOjHAokdnVW2WzzYPaeIHM9YI6ovMGTbBct7nSLsbg/hBHc/w+tsvsn6kAcIxStQ==
   dependencies:
     "@aviarytech/did-peer" "^0.0.19"
     did-resolver "^4.0.0"
