@@ -175,6 +175,8 @@ didResolver:
               $ref: /web-did-resolver
             key:
               $ref: /did-key-resolver
+            peer:
+              $ref: /peer-did-resolver
             elem:
               $ref: /universal-resolver
             io:
