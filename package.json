@@ -10,11 +10,10 @@
     "dev": "yarn veramo server --config=./config/agent-local.yml"
   },
   "dependencies": {
-    "@veramo/cli": "^5.0.1-next.4",
-    "@veramo/did-comm": "^5.0.0",
+    "@veramo/cli": "^5.1.5-next.8",
+    "@veramo/did-comm": "^5.1.5-next.8",
+    "@veramo/did-provider-peer": "^5.1.5-next.8",
     "agent-explore": "^1.8.3",
-    "cors": "^2.8.5",
-    "did-peer-plugin": "^1.0.3",
-    "peer-did-resolver": "^1.0.1"
+    "cors": "^2.8.5"
   }
 }

@@ -1,20 +1,10 @@
 version: 3.0
 
 constants:
-  baseUrl:
-    $env: BASE_URL
-  port:
-    $env: PORT
-  apiKey:
-    $env: API_KEY
-  secretKey:
-    $env: SECRET_KEY
-  agentPath:
-    $env: AGENT_PATH
-  messagingEndpoint:
-    $env: MESSAGING_PATH
-  databaseUrl:
-    $env: DATABASE_URL
+  baseUrl: http://localhost:3332
+  port: 3332
+  secretKey: 29739248cad1bd1a0fc4d9b75cd4d2990de535baf5caadfdf8d8f86664aa830c
+  databaseFile: ./db/database.sqlite
   methods:
     - keyManagerGetKeyManagementSystems
     - keyManagerCreate
@@ -75,19 +65,17 @@ constants:
 dbConnection:
   $require: typeorm#DataSource
   $args:
-    - type: postgres
-      url:
-        $ref: /constants/databaseUrl
+    - type: sqlite
+      database:
+        $ref: /constants/databaseFile
       synchronize: false
       migrationsRun: true
       migrations:
         $require: '@veramo/data-store?t=object#migrations'
       logging: false
-      ## Heroku Personal Account (Not required for team account)
-      ssl:
-        rejectUnauthorized: false
       entities:
         $require: "@veramo/data-store?t=object#Entities"
+
 # Server configuration
 server:
   baseUrl:
@@ -120,8 +108,7 @@ server:
     - - /agent
       - $require: "@veramo/remote-server?t=function#apiKeyAuth"
         $args:
-          - apiKey:
-              $ref: /constants/apiKey
+          - apiKey: test123
       - $require: "@veramo/remote-server?t=function#AgentRouter"
         $args:
           - exposedMethods:
@@ -131,8 +118,7 @@ server:
     - - /open-api.json
       - $require: "@veramo/remote-server?t=function#ApiSchemaRouter"
         $args:
-          - basePath:
-              $ref: /constants/agentPath
+          - basePath: :3332/agent
             securityScheme: bearer
             apiName: Agent
             apiVersion: "1.0.0"
@@ -150,12 +136,10 @@ server:
 
     # Agent explorer
     - - $require: agent-explore?t=function#ExplorerRouter
-        # $args:
-        #   - - schemaUrl: https://example.com/open-api.json
-        #       name: Example name
-        #       apiKey: exampleKey123
-
-
+        $args:
+          - - schemaUrl: http://localhost:3332/open-api.json
+              name: Local agent
+              apiKey: test123
 
   # # Execute during server initialization
   # init:
@@ -165,8 +149,7 @@ server:
   #           $ref: /agent
   #         baseUrl:
   #           $ref: /constants/baseUrl
-  #         messagingServiceEndpoint:
-  #           $ref: /constants/messagingEndpoint
+  #         messagingServiceEndpoint: /messaging
 
 # Message handler plugin
 messageHandler:
@@ -177,7 +160,7 @@ messageHandler:
         - $require: "@veramo/did-comm#CoordinateMediationMediatorMessageHandler"
         - $require: "@veramo/did-comm#PickupMediatorMessageHandler"
         - $require: "@veramo/did-comm#RoutingMessageHandler"
-        - $require: "@veramo/did-comm#TrustPingMessageHandler"
+        - $require: "@veramo/did-comm#TrustPingMessageHandler" 
 
 # DID resolvers
 didResolver:
@@ -194,8 +177,6 @@ didResolver:
               $ref: /did-key-resolver
             peer:
               $ref: /peer-did-resolver
-            ens:
-              $ref: /universal-resolver
             elem:
               $ref: /universal-resolver
             io:
@@ -223,7 +204,6 @@ did-key-resolver:
 
 peer-did-resolver:
   $require: 'peer-did-resolver?t=function&p=/peer#getResolver'
-
 
 # Key Manager
 keyManager:
@@ -267,7 +247,7 @@ didManager:
           $args:
             - defaultKms: local
               network: goerli
-              rpcUrl: https://rinkeby.infura.io/v3/5ffc47f65c4042ce847ef66a3fa70d4c
+              rpcUrl: https://goerli.infura.io/v3/5ffc47f65c4042ce847ef66a3fa70d4c
               gas: 1000001
               ttl: 31104001
         did:web:
@@ -282,7 +262,6 @@ didManager:
           $require: "did-peer-plugin#PeerDIDProvider"
           $args:
             - defaultKms: local
-
 didDiscovery:
   $require: '@veramo/did-discovery#DIDDiscovery'
   $args:
