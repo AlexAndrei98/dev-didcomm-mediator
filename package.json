@@ -14,6 +14,7 @@
     "@veramo/did-comm": "^5.1.5-next.8",
     "@veramo/did-provider-peer": "^5.1.5-next.8",
     "agent-explore": "^1.8.3",
-    "cors": "^2.8.5"
+    "cors": "^2.8.5",
+    "did-jwt": "7.0.0-alpha.2"
   }
 }
